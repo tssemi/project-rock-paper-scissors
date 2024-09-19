@@ -1,7 +1,3 @@
-//Whoever wins earns one point per round
-//A FUNCTION will keep track of the players score.
-
-
 //A FUNCTION gives VARIABLE a random string between rock, paper and scissors
 function getComputerChoice() {
     let n = Math.trunc(Math.random() * 3 + 1);
@@ -16,6 +12,7 @@ function getHumanChoice() {
 
 let check = (n) => n == 1 ? "rock" : n == 2 ? "paper" : "scissors";
 
+//Whoever wins earns one point per round
 let computerScore = 0;
 let humanScore = 0;
 
@@ -54,4 +51,11 @@ function playRound(humChoice, comChoice) {
     }
 }
 
-
+function playGame() {
+    if (humanScore == 5 || computerScore == 5) {
+        console.log(`The winner is the ${humanScore > computerScore ? "PLAYER" : "COMPUTER"}`)
+    } else {
+        playRound()   
+    }
+}
+playGame()
