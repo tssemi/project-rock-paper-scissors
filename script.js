@@ -1,16 +1,18 @@
-//A FUNCTION gives VARIABLE a random string between rock, paper and scissors
+//A FUNCTION gives a VARIABLE a random string between rock, paper and scissors
 function getComputerChoice() {
     let n = Math.trunc(Math.random() * 3 + 1);
-    return check(n)
+    return n == 1 ? "rock" : n == 2 ? "paper" : "scissors";
 }
-
 //The player enters another string into a VARIABLE using PROMPT (rock, paper ora scissors)
 function getHumanChoice() {
-    let n = prompt("Let's play! Choose one... Rock(1), Paper(2) or Scissors(3 or other)?", );
-    return check(n)
+    let str = "";
+    do {
+        str = prompt("Let's play! Choose... Rock, Paper or Scissors?", ).toLowerCase();
+    } while (str != "rock" && str != "paper" && str != "scissors");
+    return str
 }
 
-let check = (n) => n == 1 ? "rock" : n == 2 ? "paper" : "scissors";
+//let check = (n) => n == 1 ? "rock" : n == 2 ? "paper" : "scissors";
 
 //Whoever wins earns one point per round
 let computerScore = 0;
