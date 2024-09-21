@@ -19,24 +19,20 @@ let humanScore = 0;
 //Both VARIABLES are compared in a FUNCTION
 function playRound(humChoice, comChoice) {
     humChoice = getHumanChoice();
-    console.log(humChoice)
+    console.log(`Player: ${humChoice}`)
     comChoice = getComputerChoice();
-    console.log(comChoice)
+    console.log(`Computer: ${comChoice}`)
     switch (humChoice.toLowerCase()) {
         case "rock":
             if (comChoice == "rock") {
-                console.log("It's a tie.");
+                alert("It's a tie.");
             } else if (comChoice == "paper") {
-                console.log("You lose...");
+                alert("You lose...");
                 computerScore += 1;
-                console.log(computerScore + " comp")
-                console.log(humanScore + " human")
 
             } else {
-                console.log("You win!");
+                alert("You win!");
                 humanScore += 1;
-                console.log(computerScore + " comp")
-                console.log(humanScore + " human")
             }
             break;
         case "paper":
@@ -52,10 +48,11 @@ function playRound(humChoice, comChoice) {
 }
 
 function playGame() {
-    if (humanScore == 5 || computerScore == 5) {
-        console.log(`The winner is the ${humanScore > computerScore ? "PLAYER" : "COMPUTER"}`)
-    } else {
-        playRound()   
-    }
+    do {
+        playRound()
+        console.log(`Computer ${computerScore} / Human ${humanScore}`)
+    } while (humanScore < 4 && computerScore < 4);
+    console.log(`The winner is the ${humanScore > computerScore ? "PLAYER" : "COMPUTER"}`)
+
 }
 playGame()
