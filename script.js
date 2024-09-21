@@ -11,13 +11,9 @@ function getHumanChoice() {
     } while (str != "rock" && str != "paper" && str != "scissors");
     return str
 }
-
-//let check = (n) => n == 1 ? "rock" : n == 2 ? "paper" : "scissors";
-
 //Whoever wins earns one point per round
 let computerScore = 0;
 let humanScore = 0;
-
 //Both VARIABLES are compared in a FUNCTION
 function playRound(humChoice, comChoice) {
     humChoice = getHumanChoice();
@@ -68,4 +64,5 @@ function playGame() {
     alert(`The winner of the game is the ${humanScore > computerScore ? "PLAYER" : "COMPUTER"}`)
 
 }
+
 playGame()
