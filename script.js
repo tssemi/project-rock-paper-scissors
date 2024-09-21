@@ -29,21 +29,32 @@ function playRound(humChoice, comChoice) {
             } else if (comChoice == "paper") {
                 alert("You lose...");
                 computerScore += 1;
-
             } else {
                 alert("You win!");
                 humanScore += 1;
             }
             break;
         case "paper":
-
+            if (comChoice == "paper") {
+                alert("It's a tie.");
+            } else if (comChoice == "scissors") {
+                alert("You lose...");
+                computerScore += 1;
+            } else {
+                alert("You win!");
+                humanScore += 1;
+            }
             break;
         case "scissors":
-
-            break;
-    
-        default:
-            break;
+            if (comChoice == "scissors") {
+                alert("It's a tie.");
+            } else if (comChoice == "rock") {
+                alert("You lose...");
+                computerScore += 1;
+            } else {
+                alert("You win!");
+                humanScore += 1;
+            }
     }
 }
 
@@ -52,7 +63,7 @@ function playGame() {
         playRound()
         console.log(`Computer ${computerScore} / Human ${humanScore}`)
     } while (humanScore < 4 && computerScore < 4);
-    console.log(`The winner is the ${humanScore > computerScore ? "PLAYER" : "COMPUTER"}`)
+    alert(`The winner of the game is the ${humanScore > computerScore ? "PLAYER" : "COMPUTER"}`)
 
 }
 playGame()
