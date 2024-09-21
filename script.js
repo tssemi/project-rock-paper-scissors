@@ -60,7 +60,7 @@ function playGame() {
     do {
         playRound()
         console.log(`Computer ${computerScore} / Human ${humanScore}`)
-    } while (humanScore < 4 && computerScore < 4);
+    } while (humanScore < 5 && computerScore < 5);
     alert(`The winner of the game is the ${humanScore > computerScore ? "PLAYER" : "COMPUTER"}`)
 
 }
