@@ -54,6 +54,7 @@ function playRound() {
                 humanScore += 1;
             }
     }
+    alert(`Computer ${computerScore} / Human ${humanScore}`)
 }
 //Start and End the game
 function playGame() {
