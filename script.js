@@ -3,16 +3,20 @@ function getComputerChoice() {
     return n == 1 ? "rock" : n == 2 ? "paper" : "scissors";
 }
 
-//Whoever wins earns one point per round
 let computerScore = 0;
 let humanScore = 0;
 
-//Both Variables are compared
 function playRound(HumanChoice) {
+    const div = document.createElement('div');
+    const choices = document.createElement('div');
+    const score = document.createElement('div');
+    div.appendChild(choices);
+    div.appendChild(score);
+    document.body.appendChild(div);
+
     humChoice = HumanChoice.toLowerCase();
     comChoice = getComputerChoice();
-    console.log(`Player: ${humChoice}`);
-    console.log(`Computer: ${comChoice}`);
+    choices.textContent = `Player choice: ${humChoice} / Computer choice: ${comChoice}`;
     switch (humChoice) {
         case "rock":
             if (comChoice == "rock") {
@@ -47,27 +51,24 @@ function playRound(HumanChoice) {
                 humanScore += 1;
             }
     }
-    alert(`Computer ${computerScore} / Human ${humanScore}`)
+    score.textContent = `SCORE: Player= ${humanScore} / Computer= ${computerScore}`
 }
-
-//Three buttons
+//Create html elements
 const btnRock = document.createElement('button');
 const btnPaper = document.createElement('button');
 const btnScissors = document.createElement('button');
-
 btnRock.textContent = "ROCK";
 btnPaper.textContent = "PAPER";
 btnScissors.textContent = "SCISSORS";
 
+append(btnRock, btnPaper, btnScissors);
 
 function append(...btns) {
-    btns.forEach(e => document.body.appendChild(e));
+    btns.forEach((e) => document.body.appendChild(e));
 };
 
 function playGame(...btns) {
     btns.forEach((b) => b.addEventListener("click", () => playRound(b.textContent)));
     console.log(`The winner of the game is the ${humanScore > computerScore ? "PLAYER" : "COMPUTER"}`)
 }
-
-append(btnRock, btnPaper, btnScissors);
 playGame(btnRock, btnPaper, btnScissors);
