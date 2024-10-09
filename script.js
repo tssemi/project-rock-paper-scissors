@@ -56,8 +56,10 @@ function playRound(HumanChoice) {
             }
     }
     score.textContent = `SCORE: Player= ${humanScore} / Computer= ${computerScore}`;
-    if (!condition()) winner.textContent = `The game is over. The winner is ${humanScore > computerScore ? "PLAYER" : "COMPUTER"}`;
-    document.body.appendChild(winner)
+    if (!condition()) {
+        winner.textContent = `The game is over. The winner is ${humanScore > computerScore ? "PLAYER" : "COMPUTER"}`;
+        document.body.appendChild(winner)
+    }
 }
 //Create html elements
 const btnRock = document.createElement('button');
