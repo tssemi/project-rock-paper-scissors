@@ -10,13 +10,17 @@ function playRound(HumanChoice) {
     const div = document.createElement('div');
     const choices = document.createElement('div');
     const score = document.createElement('div');
+    const winner = document.createElement('div');
+
     div.appendChild(choices);
     div.appendChild(score);
     document.body.appendChild(div);
 
     humChoice = HumanChoice.toLowerCase();
     comChoice = getComputerChoice();
+
     choices.textContent = `Player choice: ${humChoice} / Computer choice: ${comChoice}`;
+    
     switch (humChoice) {
         case "rock":
             if (comChoice == "rock") {
@@ -51,12 +55,15 @@ function playRound(HumanChoice) {
                 humanScore += 1;
             }
     }
-    score.textContent = `SCORE: Player= ${humanScore} / Computer= ${computerScore}`
+    score.textContent = `SCORE: Player= ${humanScore} / Computer= ${computerScore}`;
+    if (!condition()) winner.textContent = `The game is over. The winner is ${humanScore > computerScore ? "PLAYER" : "COMPUTER"}`;
+    document.body.appendChild(winner)
 }
 //Create html elements
 const btnRock = document.createElement('button');
 const btnPaper = document.createElement('button');
 const btnScissors = document.createElement('button');
+
 btnRock.textContent = "ROCK";
 btnPaper.textContent = "PAPER";
 btnScissors.textContent = "SCISSORS";
@@ -68,7 +75,16 @@ function append(...btns) {
 };
 
 function playGame(...btns) {
-    btns.forEach((b) => b.addEventListener("click", () => playRound(b.textContent)));
-    console.log(`The winner of the game is the ${humanScore > computerScore ? "PLAYER" : "COMPUTER"}`)
+    btns.forEach((b) => b.addEventListener("click", (e) => {
+        if (condition()) {
+            playRound(b.textContent);
+        } else {
+            e.stopPropagation();
+        }
+    })
+    );
 }
+
+const condition = () => humanScore < 5 && computerScore < 5;
+
 playGame(btnRock, btnPaper, btnScissors);
