@@ -58,11 +58,14 @@ function playRound() {
 }
 //Start and End the game
 function playGame() {
-    do {
-        playRound()
-        console.log(`Computer ${computerScore} / Human ${humanScore}`)
-    } while (humanScore < 5 && computerScore < 5);
+    playRound();
     alert(`The winner of the game is the ${humanScore > computerScore ? "PLAYER" : "COMPUTER"}`)
 }
+//Three buttons
+const btnRock = document.createElement('button');
+const btnPaper = document.createElement('button');
+const btnScissors = document.createElement('button');
 
-playGame();
+function append(...btns) {btns.forEach(e => document.body.appendChild(e))};
+
+append(btnRock, btnPaper, btnScissors);
